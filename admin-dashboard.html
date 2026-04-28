@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | Zero Queue</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>⚡ Zero Queue</h2>
+    <ul>
+
+      <li class="active" id="dashboardLink">
+      <a href="#dashboardSection" onclick="setActive('dashboardLink')">Dashboard</a>
+      </li>
+
+      <li id="queueLink">
+      <a href="#queueSection" onclick="setActive('queueLink')">Queue</a>
+      </li>
+
+      <li id="historyLink">
+      <a href="#historySection" onclick="setActive('historyLink')">History</a>
+      </li>
+
+      <li class="logout">
+        <a href="index.html" onclick="logout()">Logout</a>
+      </li>
+
+    </ul>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Dashboard Section -->
+    <div id="dashboardSection">
+
+      <div class="topbar">
+        <div>
+          <h1>Admin Dashboard</h1>
+          <p>Manage tokens, live queue status and user flow.</p>
+        </div>
+        <span class="user-badge">👤 <span id="loggedUserName">Admin</span></span>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <h3>Total Tokens</h3>
+          <p id="totalCount">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Waiting</h3>
+          <p id="waitingCount">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Serving</h3>
+          <p id="servingCount">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Completed</h3>
+          <p id="completedCount">0</p>
+        </div>
+      </div>
+
+      <div class="current-box">
+        <h2>Current Serving: <span id="currentToken">#0</span></h2>
+
+        <div class="admin-actions">
+          <button onclick="callNext()">Call Next</button>
+          <button onclick="completeToken()">Complete</button>
+          <button onclick="resetQueue()">Reset Queue</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Queue Section -->
+    <div class="table-box" id="queueSection">
+      <h2>Waiting Queue</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Token</th>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Priority</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody id="queueTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- History Section -->
+    <div class="table-box" id="historySection">
+      <h2>Completed Tokens History</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Token</th>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Priority</th>
+            <th>Completed At</th>
+          </tr>
+        </thead>
+
+        <tbody id="historyTableBody"></tbody>
+      </table>
+    </div>
+
+  </main>
+
+</div>
+
+<audio id="callSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3" preload="auto"></audio>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/admin.js"></script>
+
+<script>
+  checkAuth("admin");
+</script>
+</body>
+</html>

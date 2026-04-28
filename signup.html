@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup | Zero Queue</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <h2>🚀 Zero Queue</h2>
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn">Home</a>
+    <a href="login.html" class="nav-btn">Login</a>
+    <a href="signup.html" class="nav-btn active">Signup</a>
+  </div>
+</div>
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h1>Create Account</h1>
+    <p>Join Zero Queue and book/manage digital tokens.</p>
+
+    <input type="text" id="signupName" placeholder="Enter your name">
+    <input type="email" id="signupEmail" placeholder="Enter your email">
+    <input type="password" id="signupPassword" placeholder="Create password">
+
+    <select id="signupRole" onchange="toggleAdminService()">
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+
+    <select id="adminService" style="display: none;">
+      <option value="">Select Admin Service</option>
+      <option value="Doctor Consultation">Doctor Consultation</option>
+      <option value="Bank Counter">Bank Counter</option>
+      <option value="College Office">College Office</option>
+      <option value="Billing Counter">Billing Counter</option>
+    </select>
+
+    <a href="javascript:void(0)" class="primary-btn" onclick="signup()">Signup</a>
+
+    <p class="auth-link">
+      Already have an account?
+      <a href="login.html">Login</a>
+    </p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

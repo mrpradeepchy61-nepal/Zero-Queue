@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Zero Queue</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <h2>🚀 Zero Queue</h2>
+
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="login.html" class="nav-link active">Login</a>
+            <a href="signup.html" class="primary-btn" onclick="signup()">Signup</a>
+        </div>
+    </div>
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h1>Welcome Back</h1>
+    <p>Login to continue Zero Queue.</p>
+
+    <input type="email" id="loginEmail" placeholder="Enter your email">
+    <input type="password" id="loginPassword" placeholder="Enter password">
+
+    <button onclick="login()">Login</button>
+
+    <p class="auth-link">
+      Don’t have an account?
+      <a href="signup.html">Signup</a>
+    </p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</body>
+</html>

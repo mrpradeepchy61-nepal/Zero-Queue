@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Now Serving</title>
+  <style>
+    body {
+      background: black;
+      color: #22c55e;
+      text-align: center;
+      font-family: Arial;
+    }
+
+    h1 {
+      font-size: 80px;
+      margin-top: 100px;
+    }
+
+    h2 {
+      font-size: 50px;
+      color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+
+<h1 id="current">#0</h1>
+<h2 id="next">Next: #0</h2>
+
+<script>
+function updateDisplay() {
+  const queue = JSON.parse(localStorage.getItem("queue")) || [];
+
+  const serving = queue.find(t => t.status === "serving");
+  const next = queue.find(t => t.status === "waiting");
+
+  document.getElementById("current").innerText =
+    serving ? "#" + serving.tokenNo : "#0";
+
+  document.getElementById("next").innerText =
+    next ? "Next: #" + next.tokenNo : "No Next";
+}
+
+setInterval(updateDisplay, 1000);
+updateDisplay();
+</script>
+
+</body>
+</html>

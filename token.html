@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Token Details | Zero Queue</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <h2>🚀 Zero Queue</h2>
+  <div class="nav-links">
+    <a href="user-dashboard.html" class="nav-btn">Dashboard</a>
+  </div>
+</div>
+
+<!-- Main Container -->
+<div class="auth-wrapper">
+
+  <div class="glass-panel" style="max-width: 500px; width: 100%;">
+
+    <h1 class="token-title">🎟 Your Token</h1>
+
+    <!-- Token Number -->
+    <div style="text-align:center; margin: 20px 0;">
+      <h2 id="tokenNo" class="token-number">#0</h2>
+    </div>
+
+    <!-- Token Info -->
+    <div class="token-info">
+
+      <div>
+        <span>Name</span>
+        <p id="tokenName">-</p>
+      </div>
+
+      <div>
+        <span>Service</span>
+        <p id="tokenService">-</p>
+      </div>
+
+      <div>
+        <span>Priority</span>
+        <p id="tokenPriority" class="priority-normal">normal</p>
+      </div>
+
+      <div>
+        <span>Status</span>
+        <p id="tokenStatus" class="status">waiting</p>
+      </div>
+
+      <div>
+        <span>Queue Position</span>
+        <p id="tokenPosition">-</p>
+      </div>
+
+      <div>
+        <span>Estimated Time</span>
+        <p id="tokenTime">-</p>
+      </div>
+
+    </div>
+
+    <!-- QR Code -->
+    <div style="text-align:center; margin-top: 25px;">
+      <h3>Scan Token</h3>
+      <div id="qrcode"></div>
+    </div>
+
+    <!-- Back Button -->
+    <div style="text-align:center; margin-top: 25px;">
+      <a href="user-dashboard.html" class="primary-btn">← Back to Dashboard</a>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/token.js"></script>
+
+</body>
+</html>

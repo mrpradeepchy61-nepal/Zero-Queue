@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard | Zero Queue</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="user-layout">
+
+    <aside class="sidebar">
+        <h2>👥 Zero Queue</h2>
+        <ul>
+            <li class="active" id="userDashboardLink">
+            <a href="#userDashboardSection" onclick="setUserActive('userDashboardLink')">Dashboard</a>
+            </li>
+
+            <li id="myTokenLink">
+              <a href="#myTokensSection" onclick="setUserActive('myTokenLink')">My Token</a>
+            </li>
+
+            <li id="notificationLink">
+              <a href="javascript:void(0)" onclick="openNotifications(); setUserActive('notificationLink')">
+                Notifications <span id="notificationBadge" class="badge">0</span>
+              </a>
+            </li>
+
+            <li class="logout">
+            <a href="index.html" onclick="logout()">Logout</a>
+            </li>
+        </ul>
+    </aside>
+
+  <main class="main" id="userDashboardSection">
+    <div class="topbar">
+      <div>
+        <h1>User Dashboard</h1>
+        <p>Generate your token and track your turn in real-time</p>
+      </div>
+      <span class="user-badge">👤 <span id="loggedUserName">User</span></span>
+    </div>
+
+    <div class="user-grid">
+
+      <section class="glass-panel token-form-panel">
+        <h2>🎫 Generate Token</h2>
+        <p>Enter your details and select a service.</p>
+
+        <div class="premium-form">
+          <input type="text" id="userName" placeholder="Enter your name">
+
+          <select id="service" onchange="updateLiveStatus()">
+            <option value="">Select Service</option>
+            <option value="Doctor Consultation">Doctor Consultation</option>
+            <option value="Bank Counter">Bank Counter</option>
+            <option value="College Office">College Office</option>
+            <option value="Billing Counter">Billing Counter</option>
+          </select>
+          <select id="priority">
+            <option value="normal">Normal</option>
+            <option value="senior">Senior Citizen</option>
+            <option value="emergency">Emergency</option>
+          </select>
+
+          <button onclick="generateToken()">Generate Token</button>
+        </div>
+      </section>
+
+      <section class="glass-panel status-panel">
+        <h2>⏳ Live Queue Status</h2>
+        
+        <div class="status-item">
+          <span>Service</span>
+          <strong id="liveServingService">-</strong>
+        </div>
+
+        <div class="status-item">
+          <span>Current Serving</span>
+          <strong id="liveCurrentServing">#0</strong>
+        </div>
+
+        <div class="status-item">
+          <span>Average Time/User</span>
+          <strong>3 min</strong>
+        </div>
+
+        <div class="status-item">
+          <span>Notification</span>
+          <strong>5 min before turn</strong>
+        </div>
+      </section>
+
+      <div class="notification-drawer" id="notificationDrawer">
+      <div class="drawer-header">
+        <h2>🔔 Notifications</h2>
+        <button onclick="closeNotifications()">×</button>
+      </div>
+
+      <ul id="notificationList">
+        <li>No notifications yet</li>
+      </ul>
+    </div>
+
+    </div>
+
+    <section class="glass-panel my-token-panel">
+      <h2>📌 My Token Preview</h2>
+
+      <div class="token-preview">
+        <div>
+          <span>Token</span>
+          <h3 id="previewToken">Not Generated</h3>
+        </div>
+
+        <div>
+          <span>Queue Position</span>
+          <h3 id="previewPosition">-</h3>
+        </div>
+
+        <div>
+          <span>Estimated Wait</span>
+          <h3 id="previewTime">-</h3>
+        </div>
+
+        <div>
+          <span>Status</span>
+          <h3 id="previewStatus">-</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-panel my-token-panel" id="myTokensSection">
+      <h2>🎟 My Tokens</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Service</th>
+            <th>Priority</th>
+            <th>Token</th>
+            <th>Status</th>
+            <th>View</th>
+          </tr>
+        </thead>
+
+        <tbody id="myTokensTableBody"></tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/user.js"></script>
+
+<script>
+  checkAuth("user");
+</script>
+</body>
+</html>
